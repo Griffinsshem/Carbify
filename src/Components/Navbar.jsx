@@ -1,11 +1,15 @@
 import React from "react";
+import CarRentalIcon from '@mui/icons-material/CarRental';
 
 export default function Navbar() {
   return (
     <nav className="w-full shadow-md bg-white">
       <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
         {/* Logo */}
-        <h1 className="text-xl font-semibold">Carbify</h1>
+        <div className="flex">
+          <CarRentalIcon className="text-2xl text-blue-600" />
+          <h1 className="text-xl font-semibold">Carbify</h1>
+        </div>
 
         {/* Menu items */}
         <div className="hidden md:flex items-center gap-6">
