@@ -2,6 +2,9 @@ import React from "react";
 import CarRentalIcon from "@mui/icons-material/CarRental";
 
 export default function Navbar() {
+
+  const [isOpen, setIsOpen] = React.useState(false);
+
   return (
     <nav className="w-full bg-[#0F9E99] text-[#EFE9E0] backdrop-blur-sm shadow-sm sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
