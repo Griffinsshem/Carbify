@@ -1,6 +1,6 @@
 import { Jost } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/Components/Navbar";
+import Navbar from "@/components/Navbar";
 
 const jost = Jost({
   variable: "--font-jost",
