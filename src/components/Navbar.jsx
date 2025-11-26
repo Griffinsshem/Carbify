@@ -7,16 +7,16 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center gap-2">
-          <CarRentalIcon className="text-3xl text-[#EFE9E0]" />
-          <h1 className="text-xl font-semibold tracking-wide">Carbify</h1>
+          <CarRentalIcon className="text-5xl text-[#EFE9E0]" />
+          <h1 className="text-xl font-bold tracking-wide">Carbify</h1>
         </div>
 
         {/* Menu items */}
         <div className="hidden md:flex items-center gap-6">
-          <a href="#" className="text-sm hover:text-white transition">Home</a>
-          <a href="#" className="text-sm hover:text-white transition">Cars</a>
-          <a href="#" className="text-sm hover:text-white transition">About</a>
-          <a href="#" className="text-sm hover:text-white transition">Contact</a>
+          <a href="#" className="text-lg hover:text-white font-bold transition">Home</a>
+          <a href="#" className="text-lg hover:text-white font-bold transition">Cars</a>
+          <a href="#" className="text-lg hover:text-white font-bold transition">About</a>
+          <a href="#" className="text-lg hover:text-white font-bold transition">Contact</a>
         </div>
 
         {/* Hamburger menu for mobile */}
