@@ -23,7 +23,9 @@ export default function Navbar() {
         </div>
 
         {/* Hamburger menu for mobile */}
-        <button className="md:hidden text-2xl text-[#EFE9E0] focus:outline-none">
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="md:hidden text-2xl text-[#EFE9E0] focus:outline-none">
           ☰
         </button>
       </div>
