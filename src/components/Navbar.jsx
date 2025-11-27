@@ -15,7 +15,7 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="w-full bg-[#0F9E99] text-[#EFE9E0] backdrop-blur-sm shadow-sm sticky top-0 z-50">
+    <nav className="w-full bg-[#0F9E99] text-[#EFE9E0] backdrop-blur-sm shadow-lg shadow-black/10 sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
 
         {/* Logo */}
@@ -30,7 +30,7 @@ export default function Navbar() {
             <a
               key={item.href}
               href={item.href}
-              className={`text-lg font-bold transition 
+              className={`text-lg font-bold transition-all duration-200 hover:opacity-90 
                 ${pathname === item.href ? "text-white" : "text-[#EFE9E0] hover:text-[#808080]"}`}
             >
               {item.name}
@@ -54,7 +54,7 @@ export default function Navbar() {
             <a
               key={item.href}
               href={item.href}
-              className={`text-base font-semibold transition 
+              className={`text-base font-semibold transition-all duration-200 hover:opacity-90 
                 ${pathname === item.href ? "text-white" : "text-[#EFE9E0] hover:text-white"}`}
             >
               {item.name}
