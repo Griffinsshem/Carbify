@@ -2,11 +2,14 @@
 module.exports = {
   content: [
     "./src/app/**/*.{js,jsx,ts,tsx}",
-    "./src/components/**/*.{js,jsx,ts,tsx}",
-    "./src/Components/**/*.{js,jsx,ts,tsx}",
+    "./src/components/**/*.{js,jsx,ts,tsx}"
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        jost: ["var(--font-jost)", "sans-serif"],
+      },
+    },
   },
   plugins: [],
 };
