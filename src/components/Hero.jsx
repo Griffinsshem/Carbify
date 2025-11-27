@@ -57,10 +57,19 @@ export default function Hero() {
             height={400}
             alt="Luxury Car"
             className="
-              relative z-20 drop-shadow-2xl 
-              transform hover:scale-105 transition-all duration-500
-            "
+              relative z-20 
+              rounded-xl 
+              drop-shadow-2xl
+              shadow-black/50
+              transition-all duration-500
+              transform hover:scale-105
+              object-cover
+  "
+            priority
           />
+          <div className="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-t from-[#0F9E99] to-transparent z-10 pointer-events-none" />
+
+
         </div>
 
       </div>
