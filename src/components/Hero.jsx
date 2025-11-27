@@ -64,7 +64,7 @@ export default function Hero() {
               transition-all duration-500
               transform hover:scale-105
               object-cover
-  "
+             "
             priority
           />
           <div className="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-t from-[#0F9E99] to-transparent z-10 pointer-events-none" />
@@ -73,9 +73,6 @@ export default function Hero() {
         </div>
 
       </div>
-
-      {/* Decorative Bottom Curve */}
-      <div className="absolute bottom-0 left-0 w-full h-12 bg-white rounded-t-[30px]" />
     </section>
   );
 }
