@@ -1,0 +1,80 @@
+"use client";
+
+import React from "react";
+import { Car, Mail, Phone, MapPin } from "lucide-react";
+
+export default function Footer() {
+  return (
+    <footer className="bg-[#0F9E99] text-[#EFE9E0] mt-20">
+      {/* Main Footer Section */}
+      <div className="max-w-7xl mx-auto px-6 py-14 grid grid-cols-1 md:grid-cols-4 gap-10">
+
+        {/* Brand */}
+        <div>
+          <div className="flex items-center gap-2 mb-4">
+            <Car className="w-7 h-7 text-[#EFE9E0]" strokeWidth={2.4} />
+            <h1 className="text-2xl font-extrabold tracking-wide">Carbify</h1>
+          </div>
+
+          <p className="text-sm leading-relaxed opacity-90">
+            Your trusted car rental platform.
+            Reliable, affordable, and designed for smooth travel experiences.
+          </p>
+        </div>
+
+        {/* Quick Links */}
+        <div>
+          <h3 className="text-lg font-bold mb-4">Quick Links</h3>
+          <ul className="space-y-2 text-sm">
+            <li><a href="/" className="hover:text-white transition">Home</a></li>
+            <li><a href="/cars" className="hover:text-white transition">Cars</a></li>
+            <li><a href="/about" className="hover:text-white transition">About</a></li>
+            <li><a href="/contact" className="hover:text-white transition">Contact</a></li>
+          </ul>
+        </div>
+
+        {/* Support */}
+        <div>
+          <h3 className="text-lg font-bold mb-4">Support</h3>
+          <ul className="space-y-2 text-sm">
+            <li><a href="#" className="hover:text-white transition">FAQ</a></li>
+            <li><a href="#" className="hover:text-white transition">Help Center</a></li>
+            <li><a href="#" className="hover:text-white transition">Rental Policies</a></li>
+            <li><a href="#" className="hover:text-white transition">Terms & Conditions</a></li>
+          </ul>
+        </div>
+
+        {/* Contact Info */}
+        <div>
+          <h3 className="text-lg font-bold mb-4">Contact Us</h3>
+
+          <div className="space-y-3 text-sm">
+            <div className="flex items-center gap-3">
+              <Mail className="w-5 h-5" />
+              <span>support@carbify.com</span>
+            </div>
+
+            <div className="flex items-center gap-3">
+              <Phone className="w-5 h-5" />
+              <span>+254 712 345 678</span>
+            </div>
+
+            <div className="flex items-center gap-3">
+              <MapPin className="w-5 h-5" />
+              <span>Nairobi, Kenya</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Divider */}
+      <div className="border-t border-[#EFE9E0]/20"></div>
+
+      {/* Bottom */}
+      <div className="max-w-7xl mx-auto px-6 py-5 flex flex-col md:flex-row justify-between items-center text-sm opacity-80">
+        <p>© {new Date().getFullYear()} Carbify. All rights reserved.</p>
+        <p className="mt-2 md:mt-0">Designed with ❤️ in Kenya.</p>
+      </div>
+    </footer>
+  );
+}
