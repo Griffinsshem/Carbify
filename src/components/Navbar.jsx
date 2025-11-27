@@ -1,6 +1,7 @@
 "use client";
+
 import React from "react";
-import CarRentalIcon from "@mui/icons-material/CarRental";
+import { Car } from "lucide-react";
 import { usePathname } from "next/navigation";
 
 export default function Navbar() {
@@ -19,49 +20,80 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
 
         {/* Logo */}
-        <div className="flex items-center gap-2">
-          <CarRentalIcon className="text-5xl text-[#EFE9E0]" />
-          <h1 className="text-xl font-bold tracking-wide">Carbify</h1>
+        <div className="flex items-center gap-3">
+          <Car className="w-7 h-7 text-[#EFE9E0]" strokeWidth={2.4} />
+          <span className="text-2xl font-extrabold tracking-wide">Carbify</span>
         </div>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex items-center gap-6">
+        <div className="hidden md:flex items-center gap-8">
+
           {menuItems.map((item) => (
             <a
               key={item.href}
               href={item.href}
-              className={`text-lg font-bold transition-all duration-200 hover:opacity-90 
-                ${pathname === item.href ? "text-white" : "text-[#EFE9E0] hover:text-[#808080]"}`}
+              className="relative group text-lg font-semibold transition-all duration-200"
             >
-              {item.name}
+              {/* Text */}
+              <span
+                className={`${pathname === item.href
+                    ? "text-white"
+                    : "text-[#EFE9E0] group-hover:text-white"
+                  }`}
+              >
+                {item.name}
+              </span>
+
+              {/* Active Underline Animation */}
+              <span
+                className={`
+                  absolute left-0 -bottom-1 h-[3px] rounded-full bg-white transition-all duration-300
+                  ${pathname === item.href ? "w-full opacity-100" : "w-0 opacity-0 group-hover:w-full group-hover:opacity-100"}
+                `}
+              />
             </a>
           ))}
+
+          {/* Auth Buttons */}
+          <button className="px-5 py-2 rounded-full bg-[#EFE9E0] text-[#0F9E99] font-semibold hover:bg-white transition-all duration-300 shadow-md">
+            Login
+          </button>
         </div>
 
         {/* Hamburger Button */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden text-2xl text-[#EFE9E0] focus:outline-none"
+          className="md:hidden text-3xl text-[#EFE9E0] focus:outline-none"
         >
           ☰
         </button>
       </div>
 
       {/* Mobile Dropdown */}
-      {isOpen && (
-        <div className="md:hidden bg-[#0F9E99] px-4 pb-4 flex flex-col gap-3">
-          {menuItems.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className={`text-base font-semibold transition-all duration-200 hover:opacity-90 
-                ${pathname === item.href ? "text-white" : "text-[#EFE9E0] hover:text-white"}`}
-            >
-              {item.name}
-            </a>
-          ))}
-        </div>
-      )}
+      <div
+        className={`
+          md:hidden bg-[#0F9E99] px-4 pb-4 flex flex-col gap-3 overflow-hidden transition-all duration-300 
+          ${isOpen ? "max-h-64 opacity-100" : "max-h-0 opacity-0"}
+        `}
+      >
+        {menuItems.map((item) => (
+          <a
+            key={item.href}
+            href={item.href}
+            className={`
+              text-base font-semibold transition-all duration-200 
+              ${pathname === item.href ? "text-white" : "text-[#EFE9E0] hover:text-white"}
+            `}
+          >
+            {item.name}
+          </a>
+        ))}
+
+        {/* Mobile Login Button */}
+        <button className="mt-2 w-full py-2 rounded-lg bg-[#EFE9E0] text-[#0F9E99] font-semibold hover:bg-white transition duration-300 shadow">
+          Login
+        </button>
+      </div>
     </nav>
   );
 }
