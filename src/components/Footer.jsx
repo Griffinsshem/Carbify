@@ -14,10 +14,10 @@ export default function Footer() {
         <div>
           <div className="flex items-center gap-2 mb-3">
             <Car className="w-7 h-7 text-[#EFE9E0]" strokeWidth={2.4} />
-            <h1 className="text-xl font-bold tracking-wide">Carbify</h1>
+            <h1 className="text-3xl font-bold tracking-wide">Carbify</h1>
           </div>
 
-          <p className="text-sm leading-relaxed opacity-90">
+          <p className="text-base leading-relaxed opacity-90">
             Your trusted car rental platform—reliable, affordable, and designed
             for smooth travel experiences.
           </p>
