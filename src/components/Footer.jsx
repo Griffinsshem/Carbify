@@ -36,8 +36,8 @@ export default function Footer() {
 
         {/* Support */}
         <div>
-          <h3 className="text-base font-semibold mb-3">Support</h3>
-          <ul className="space-y-1.5 text-sm">
+          <h3 className="text-lg font-semibold mb-3">Support</h3>
+          <ul className="space-y-1.5 text-base">
             <li><a href="#" className="hover:text-white transition">FAQ</a></li>
             <li><a href="#" className="hover:text-white transition">Help Center</a></li>
             <li><a href="#" className="hover:text-white transition">Rental Policies</a></li>
