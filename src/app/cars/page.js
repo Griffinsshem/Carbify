@@ -1,10 +1,23 @@
 "use client";
 
 import React, { useState } from "react";
-import { Search, Filter, Fuel, Gauge, Users, DollarSign } from "lucide-react";
+import {
+  Search,
+  Filter,
+  Fuel,
+  Gauge,
+  Users,
+  DollarSign,
+  X,
+  ArrowRight,
+} from "lucide-react";
 
 export default function CarsPage() {
   const [search, setSearch] = useState("");
+  const [showFilters, setShowFilters] = useState(false);
+  const [selectedFuel, setSelectedFuel] = useState("");
+  const [selectedSeats, setSelectedSeats] = useState("");
+  const [selectedCar, setSelectedCar] = useState(null);
 
   const cars = [
     {
@@ -34,7 +47,8 @@ export default function CarsPage() {
     {
       name: "BMW X5 2021",
       price: "KES 16,000 / day",
-      image: "https://images.unsplash.com/photo-1612083544368-970eb9cf609d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fEJNVyUyMFg1JTIwMjAyMXxlbnwwfHwwfHx8MA%3D%3D",
+      image:
+        "https://images.unsplash.com/photo-1612083544368-970eb9cf609d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fEJNVyUyMFg1JTIwMjAyMXxlbnwwfHwwfHx8MA%3D%3D",
       fuel: "Petrol",
       seats: 7,
       mileage: "10 km/l",
@@ -58,7 +72,8 @@ export default function CarsPage() {
     {
       name: "Range Rover Sport",
       price: "KES 20,500 / day",
-      image: "https://images.pexels.com/photos/32613937/pexels-photo-32613937.jpeg",
+      image:
+        "https://images.pexels.com/photos/32613937/pexels-photo-32613937.jpeg",
       fuel: "Diesel",
       seats: 7,
       mileage: "9 km/l",
@@ -79,32 +94,38 @@ export default function CarsPage() {
       seats: 5,
       mileage: "14 km/l",
     },
-
   ];
 
-  const filteredCars = cars.filter((car) =>
-    car.name.toLowerCase().includes(search.toLowerCase())
-  );
+  // FILTERING
+  const filteredCars = cars
+    .filter((car) =>
+      car.name.toLowerCase().includes(search.toLowerCase())
+    )
+    .filter((car) =>
+      selectedFuel ? car.fuel === selectedFuel : true
+    )
+    .filter((car) =>
+      selectedSeats ? car.seats === Number(selectedSeats) : true
+    );
 
   return (
     <div className="bg-[#E7F8F7] text-[#0F3E3B] min-h-screen pb-20">
 
-      {/* Page Header */}
-      <section className="bg-gradient-to-r from-[#0F9E99] to-[#0C7F7B] text-[#EFE9E0] py-16 px-6 shadow-sm">
+      {/* Header */}
+      <section className="bg-gradient-to-r from-[#0F9E99] to-[#0C7F7B] text-[#EFE9E0] py-16 px-6">
         <div className="max-w-7xl mx-auto">
-          <h1 className="text-4xl md:text-5xl font-extrabold mb-4">Our Fleet</h1>
-          <p className="text-lg md:text-xl opacity-90 max-w-2xl">
-            Choose from our premium collection of vehicles designed for comfort,
-            reliability, and convenience.
+          <h1 className="text-4xl md:text-5xl font-extrabold">Our Fleet</h1>
+          <p className="mt-3 opacity-90 text-lg max-w-xl">
+            Premium cars designed for comfort, reliability, and style.
           </p>
         </div>
       </section>
 
-      {/* Filters */}
+      {/* Search + Filter */}
       <section className="max-w-7xl mx-auto px-6 mt-10">
-        <div className="flex flex-col md:flex-row md:justify-between gap-4">
+        <div className="flex flex-col md:flex-row gap-4 md:justify-between">
 
-          {/* Search Input */}
+          {/* Search */}
           <div className="flex items-center bg-white rounded-full shadow-md px-5 py-3 w-full md:w-2/3">
             <Search className="text-[#0F9E99] w-6 h-6 mr-3" />
             <input
@@ -116,10 +137,52 @@ export default function CarsPage() {
           </div>
 
           {/* Filter Button */}
-          <button className="flex items-center gap-2 bg-[#0F9E99] hover:bg-[#0c7f7b] text-[#EFE9E0] px-6 py-3 rounded-full shadow-md font-medium transition">
+          <button
+            onClick={() => setShowFilters(!showFilters)}
+            className="flex items-center gap-2 bg-[#0F9E99] hover:bg-[#0c7f7b] text-[#EFE9E0] px-6 py-3 rounded-full shadow-md transition"
+          >
             <Filter className="w-5 h-5" /> Filters
           </button>
         </div>
+
+        {/* Filter Dropdown */}
+        {showFilters && (
+          <div className="mt-4 p-6 bg-white rounded-2xl shadow-lg border border-[#0F9E99]/20 animate-fadeIn">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+              {/* Fuel Filter */}
+              <div>
+                <label className="font-semibold">Fuel Type</label>
+                <select
+                  className="mt-2 w-full bg-[#E7F8F7] border border-[#0F9E99]/30 rounded-xl px-4 py-3"
+                  value={selectedFuel}
+                  onChange={(e) => setSelectedFuel(e.target.value)}
+                >
+                  <option value="">All</option>
+                  <option value="Petrol">Petrol</option>
+                  <option value="Diesel">Diesel</option>
+                  <option value="Hybrid">Hybrid</option>
+                  <option value="Petrol Turbo">Petrol Turbo</option>
+                </select>
+              </div>
+
+              {/* Seats */}
+              <div>
+                <label className="font-semibold">Seats</label>
+                <select
+                  className="mt-2 w-full bg-[#E7F8F7] border border-[#0F9E99]/30 rounded-xl px-4 py-3"
+                  value={selectedSeats}
+                  onChange={(e) => setSelectedSeats(e.target.value)}
+                >
+                  <option value="">All</option>
+                  <option value="5">5 Seats</option>
+                  <option value="7">7 Seats</option>
+                  <option value="8">8 Seats</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        )}
       </section>
 
       {/* Car Grid */}
@@ -129,44 +192,62 @@ export default function CarsPage() {
             key={index}
             className="bg-white rounded-2xl shadow-lg overflow-hidden border border-[#0F9E99]/10 hover:scale-[1.02] transition-transform"
           >
-            <img
-              src={car.image}
-              alt={car.name}
-              className="w-full h-48 object-cover"
-            />
+            <img src={car.image} alt={car.name} className="w-full h-48 object-cover" />
 
             <div className="p-6">
-              <h3 className="text-xl font-bold text-[#0F4C49]">{car.name}</h3>
+              <h3 className="text-xl font-bold">{car.name}</h3>
 
               <div className="flex items-center gap-2 mt-2">
                 <DollarSign className="w-4 h-4 text-[#0F9E99]" />
-                <span className="font-medium text-[#0F3E3B]">
-                  {car.price}
-                </span>
+                <span className="font-medium">{car.price}</span>
               </div>
 
               <div className="mt-4 grid grid-cols-3 gap-2 text-sm text-[#0F3E3B]/70">
                 <div className="flex items-center gap-1">
-                  <Fuel className="w-4 h-4 text-[#0F9E99]" />
-                  {car.fuel}
+                  <Fuel className="w-4 h-4 text-[#0F9E99]" /> {car.fuel}
                 </div>
                 <div className="flex items-center gap-1">
-                  <Users className="w-4 h-4 text-[#0F9E99]" />
-                  {car.seats} Seats
+                  <Users className="w-4 h-4 text-[#0F9E99]" /> {car.seats} Seats
                 </div>
                 <div className="flex items-center gap-1">
-                  <Gauge className="w-4 h-4 text-[#0F9E99]" />
-                  {car.mileage}
+                  <Gauge className="w-4 h-4 text-[#0F9E99]" /> {car.mileage}
                 </div>
               </div>
 
-              <button className="mt-6 w-full bg-[#0F9E99] hover:bg-[#0c7f7b] text-[#EFE9E0] py-3 rounded-full font-semibold transition">
+              <button
+                onClick={() => setSelectedCar(car)}
+                className="mt-6 w-full bg-[#0F9E99] hover:bg-[#0c7f7b] text-[#EFE9E0] py-3 rounded-full font-semibold transition"
+              >
                 Book Now
               </button>
             </div>
           </div>
         ))}
       </section>
+
+      {/* Booking Modal */}
+      {selectedCar && (
+        <div className="fixed inset-0 bg-black/40 flex items-center justify-center backdrop-blur-sm">
+          <div className="bg-white p-8 rounded-2xl shadow-2xl max-w-md w-full relative">
+
+            <button
+              onClick={() => setSelectedCar(null)}
+              className="absolute top-4 right-4 bg-[#E7F8F7] p-2 rounded-full"
+            >
+              <X className="w-5 h-5" />
+            </button>
+
+            <img src={selectedCar.image} className="rounded-xl h-48 w-full object-cover" />
+
+            <h2 className="mt-4 text-2xl font-bold">{selectedCar.name}</h2>
+            <p className="mt-2 text-lg font-medium">{selectedCar.price}</p>
+
+            <button className="mt-6 w-full bg-[#0F9E99] hover:bg-[#0c7f7b] text-[#EFE9E0] py-3 rounded-full font-semibold flex items-center justify-center gap-2">
+              Proceed to Booking <ArrowRight className="w-5 h-5" />
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
