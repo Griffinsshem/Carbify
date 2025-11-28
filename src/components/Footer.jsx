@@ -90,7 +90,7 @@ export default function Footer() {
       <div className="border-t border-[#EFE9E0]/20"></div>
 
       {/* Bottom Section */}
-      <div className="max-w-7xl mx-auto px-6 py-4 flex flex-col md:flex-row justify-between items-center text-xs opacity-80">
+      <div className="max-w-7xl mx-auto px-6 py-4 flex flex-col md:flex-row justify-between items-center text-base font-semibold opacity-80">
         <p>© {new Date().getFullYear()} Carbify. All rights reserved.</p>
         <p className="mt-2 md:mt-0">Designed with ❤️ in Kenya.</p>
       </div>
