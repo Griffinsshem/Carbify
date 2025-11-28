@@ -11,16 +11,17 @@ import {
   X,
   ArrowRight,
 } from "lucide-react";
+import Link from "next/link";
 
 export default function CarsPage() {
   const [search, setSearch] = useState("");
   const [showFilters, setShowFilters] = useState(false);
   const [selectedFuel, setSelectedFuel] = useState("");
   const [selectedSeats, setSelectedSeats] = useState("");
-  const [selectedCar, setSelectedCar] = useState(null);
 
   const cars = [
     {
+      id: 0,
       name: "Toyota Corolla 2022",
       price: "KES 4,500 / day",
       image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70",
@@ -29,6 +30,7 @@ export default function CarsPage() {
       mileage: "18 km/l",
     },
     {
+      id: 1,
       name: "Mercedes C-Class",
       price: "KES 12,000 / day",
       image: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf",
@@ -37,6 +39,7 @@ export default function CarsPage() {
       mileage: "12 km/l",
     },
     {
+      id: 2,
       name: "Mazda CX-5",
       price: "KES 8,500 / day",
       image: "https://images.unsplash.com/photo-1502877338535-766e1452684a",
@@ -45,15 +48,17 @@ export default function CarsPage() {
       mileage: "15 km/l",
     },
     {
+      id: 3,
       name: "BMW X5 2021",
       price: "KES 16,000 / day",
       image:
-        "https://images.unsplash.com/photo-1612083544368-970eb9cf609d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fEJNVyUyMFg1JTIwMjAyMXxlbnwwfHwwfHx8MA%3D%3D",
+        "https://images.unsplash.com/photo-1612083544368-970eb9cf609d?w=500",
       fuel: "Petrol",
       seats: 7,
       mileage: "10 km/l",
     },
     {
+      id: 4,
       name: "Toyota Land Cruiser V8",
       price: "KES 25,000 / day",
       image: "https://images.pexels.com/photos/18847999/pexels-photo-18847999.jpeg",
@@ -62,6 +67,7 @@ export default function CarsPage() {
       mileage: "8 km/l",
     },
     {
+      id: 5,
       name: "Nissan Note 2019",
       price: "KES 3,200 / day",
       image: "https://images.pexels.com/photos/8060364/pexels-photo-8060364.jpeg",
@@ -70,15 +76,16 @@ export default function CarsPage() {
       mileage: "22 km/l",
     },
     {
+      id: 6,
       name: "Range Rover Sport",
       price: "KES 20,500 / day",
-      image:
-        "https://images.pexels.com/photos/32613937/pexels-photo-32613937.jpeg",
+      image: "https://images.pexels.com/photos/32613937/pexels-photo-32613937.jpeg",
       fuel: "Diesel",
       seats: 7,
       mileage: "9 km/l",
     },
     {
+      id: 7,
       name: "Subaru Forester XT",
       price: "KES 9,500 / day",
       image: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d",
@@ -87,6 +94,7 @@ export default function CarsPage() {
       mileage: "11 km/l",
     },
     {
+      id: 8,
       name: "Audi A4 2020",
       price: "KES 11,500 / day",
       image: "https://images.unsplash.com/photo-1504215680853-026ed2a45def",
@@ -111,7 +119,7 @@ export default function CarsPage() {
   return (
     <div className="bg-[#E7F8F7] text-[#0F3E3B] min-h-screen pb-20">
 
-      {/* Header */}
+      {/* HEADER */}
       <section className="bg-gradient-to-r from-[#0F9E99] to-[#0C7F7B] text-[#EFE9E0] py-16 px-6">
         <div className="max-w-7xl mx-auto">
           <h1 className="text-4xl md:text-5xl font-extrabold">Our Fleet</h1>
@@ -125,7 +133,6 @@ export default function CarsPage() {
       <section className="max-w-7xl mx-auto px-6 mt-10">
         <div className="flex flex-col md:flex-row gap-4 md:justify-between">
 
-          {/* Search */}
           <div className="flex items-center bg-white rounded-full shadow-md px-5 py-3 w-full md:w-2/3">
             <Search className="text-[#0F9E99] w-6 h-6 mr-3" />
             <input
@@ -136,7 +143,6 @@ export default function CarsPage() {
             />
           </div>
 
-          {/* Filter Button */}
           <button
             onClick={() => setShowFilters(!showFilters)}
             className="flex items-center gap-2 bg-[#0F9E99] hover:bg-[#0c7f7b] text-[#EFE9E0] px-6 py-3 rounded-full shadow-md transition"
@@ -145,12 +151,10 @@ export default function CarsPage() {
           </button>
         </div>
 
-        {/* Filter Dropdown */}
         {showFilters && (
-          <div className="mt-4 p-6 bg-white rounded-2xl shadow-lg border border-[#0F9E99]/20 animate-fadeIn">
+          <div className="mt-4 p-6 bg-white rounded-2xl shadow-lg border border-[#0F9E99]/20">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
 
-              {/* Fuel Filter */}
               <div>
                 <label className="font-semibold">Fuel Type</label>
                 <select
@@ -166,7 +170,6 @@ export default function CarsPage() {
                 </select>
               </div>
 
-              {/* Seats */}
               <div>
                 <label className="font-semibold">Seats</label>
                 <select
@@ -187,10 +190,11 @@ export default function CarsPage() {
 
       {/* Car Grid */}
       <section className="max-w-7xl mx-auto px-6 mt-12 grid sm:grid-cols-2 md:grid-cols-3 gap-10">
-        {filteredCars.map((car, index) => (
-          <div
-            key={index}
-            className="bg-white rounded-2xl shadow-lg overflow-hidden border border-[#0F9E99]/10 hover:scale-[1.02] transition-transform"
+        {filteredCars.map((car) => (
+          <Link
+            key={car.id}
+            href={`/cars/${car.id}`}
+            className="bg-white rounded-2xl shadow-lg overflow-hidden border border-[#0F9E99]/10 hover:scale-[1.02] transition-transform block"
           >
             <img src={car.image} alt={car.name} className="w-full h-48 object-cover" />
 
@@ -214,40 +218,13 @@ export default function CarsPage() {
                 </div>
               </div>
 
-              <button
-                onClick={() => setSelectedCar(car)}
-                className="mt-6 w-full bg-[#0F9E99] hover:bg-[#0c7f7b] text-[#EFE9E0] py-3 rounded-full font-semibold transition"
-              >
-                Book Now
-              </button>
+              <div className="mt-6 w-full bg-[#0F9E99] hover:bg-[#0c7f7b] text-[#EFE9E0] py-3 rounded-full font-semibold text-center">
+                View Details
+              </div>
             </div>
-          </div>
+          </Link>
         ))}
       </section>
-
-      {/* Booking Modal */}
-      {selectedCar && (
-        <div className="fixed inset-0 bg-black/40 flex items-center justify-center backdrop-blur-sm">
-          <div className="bg-white p-8 rounded-2xl shadow-2xl max-w-md w-full relative">
-
-            <button
-              onClick={() => setSelectedCar(null)}
-              className="absolute top-4 right-4 bg-[#E7F8F7] p-2 rounded-full"
-            >
-              <X className="w-5 h-5" />
-            </button>
-
-            <img src={selectedCar.image} className="rounded-xl h-48 w-full object-cover" />
-
-            <h2 className="mt-4 text-2xl font-bold">{selectedCar.name}</h2>
-            <p className="mt-2 text-lg font-medium">{selectedCar.price}</p>
-
-            <button className="mt-6 w-full bg-[#0F9E99] hover:bg-[#0c7f7b] text-[#EFE9E0] py-3 rounded-full font-semibold flex items-center justify-center gap-2">
-              Proceed to Booking <ArrowRight className="w-5 h-5" />
-            </button>
-          </div>
-        </div>
-      )}
     </div>
   );
 }
