@@ -68,19 +68,20 @@ export default function Footer() {
 
           {/* Social Media Icons */}
           <div className="flex items-center gap-4">
-            <a href="#" className="opacity-80 hover:opacity-100 transition">
+            <a href="#" className="p-2 rounded-full border border-white/30 hover:border-white transition">
               <Facebook className="w-5 h-5" />
             </a>
-            <a href="#" className="opacity-80 hover:opacity-100 transition">
+            <a href="#" className="p-2 rounded-full border border-white/30 hover:border-white transition">
               <Instagram className="w-5 h-5" />
             </a>
-            <a href="#" className="opacity-80 hover:opacity-100 transition">
+            <a href="#" className="p-2 rounded-full border border-white/30 hover:border-white transition">
               <Twitter className="w-5 h-5" />
             </a>
-            <a href="#" className="opacity-80 hover:opacity-100 transition">
+            <a href="#" className="p-2 rounded-full border border-white/30 hover:border-white transition">
               <Linkedin className="w-5 h-5" />
             </a>
           </div>
+
 
         </div>
       </div>
