@@ -33,7 +33,7 @@ const carsData = [
     image: "https://images.pexels.com/photos/8622791/pexels-photo-8622791.jpeg",
   },
   {
-    id: 1,
+    id: 4,
     name: "Toyota Land Cruiser",
     price: 120,
     fuel: "Diesel",
@@ -42,7 +42,7 @@ const carsData = [
     image: "https://images.pexels.com/photos/18029607/pexels-photo-18029607.jpeg",
   },
   {
-    id: 2,
+    id: 5,
     name: "Mazda CX-5",
     price: 70,
     fuel: "Petrol",
@@ -51,7 +51,7 @@ const carsData = [
     image: "https://images.pexels.com/photos/26224702/pexels-photo-26224702.jpeg",
   },
   {
-    id: 3,
+    id: 6,
     name: "Mercedes G Wagon",
     price: 200,
     fuel: "Petrol",
@@ -60,7 +60,7 @@ const carsData = [
     image: "https://images.pexels.com/photos/8622791/pexels-photo-8622791.jpeg",
   },
   {
-    id: 1,
+    id: 7,
     name: "Toyota Land Cruiser",
     price: 120,
     fuel: "Diesel",
@@ -69,7 +69,7 @@ const carsData = [
     image: "https://images.pexels.com/photos/18029607/pexels-photo-18029607.jpeg",
   },
   {
-    id: 2,
+    id: 8,
     name: "Mazda CX-5",
     price: 70,
     fuel: "Petrol",
@@ -78,7 +78,7 @@ const carsData = [
     image: "https://images.pexels.com/photos/26224702/pexels-photo-26224702.jpeg",
   },
   {
-    id: 3,
+    id: 9,
     name: "Mercedes G Wagon",
     price: 200,
     fuel: "Petrol",
