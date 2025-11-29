@@ -52,7 +52,7 @@ export default function BookingPage() {
           <div className="space-y-4">
             {/* Full Name */}
             <div className="flex gap-3 items-center border rounded-xl p-3">
-              <User className="text-gray-500" size={20} />
+              <User className="text-gray-900" size={20} />
               <input
                 type="text"
                 placeholder="Full Name"
@@ -65,7 +65,7 @@ export default function BookingPage() {
 
             {/* Email */}
             <div className="flex gap-3 items-center border rounded-xl p-3">
-              <Mail className="text-gray-500" size={20} />
+              <Mail className="text-gray-900" size={20} />
               <input
                 type="email"
                 placeholder="Email Address"
@@ -78,7 +78,7 @@ export default function BookingPage() {
 
             {/* Phone */}
             <div className="flex gap-3 items-center border rounded-xl p-3">
-              <Phone className="text-gray-500" size={20} />
+              <Phone className="text-gray-900" size={20} />
               <input
                 type="text"
                 placeholder="Phone Number"
@@ -91,7 +91,7 @@ export default function BookingPage() {
 
             {/* Pickup Date */}
             <div className="flex gap-3 items-center border rounded-xl p-3">
-              <Calendar className="text-gray-500" size={20} />
+              <Calendar className="text-gray-900" size={20} />
               <input
                 type="date"
                 className="w-full outline-none"
@@ -103,7 +103,7 @@ export default function BookingPage() {
 
             {/* Return Date */}
             <div className="flex gap-3 items-center border rounded-xl p-3">
-              <Calendar className="text-gray-500" size={20} />
+              <Calendar className="text-gray-900" size={20} />
               <input
                 type="date"
                 className="w-full outline-none"
@@ -115,7 +115,7 @@ export default function BookingPage() {
 
             {/* Pickup Location */}
             <div className="flex gap-3 items-center border rounded-xl p-3">
-              <MapPin className="text-gray-500" size={20} />
+              <MapPin className="text-gray-900" size={20} />
               <input
                 type="text"
                 placeholder="Pickup Location"
@@ -128,7 +128,7 @@ export default function BookingPage() {
 
             {/* Payment Method */}
             <div className="flex gap-3 items-center border rounded-xl p-3">
-              <CreditCard className="text-gray-500" size={20} />
+              <CreditCard className="text-gray-900" size={20} />
               <select
                 className="w-full outline-none bg-transparent"
                 onChange={(e) =>
