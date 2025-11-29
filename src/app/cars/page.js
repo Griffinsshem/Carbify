@@ -7,7 +7,7 @@ const carsData = [
   {
     id: 1,
     name: "Toyota Land Cruiser",
-    price: 120,
+    price: 300,
     fuel: "Diesel",
     seats: 7,
     speed: "180 km/h",
@@ -16,7 +16,7 @@ const carsData = [
   {
     id: 2,
     name: "Mazda CX-5",
-    price: 70,
+    price: 180,
     fuel: "Petrol",
     seats: 5,
     speed: "200 km/h",
@@ -34,7 +34,7 @@ const carsData = [
   {
     id: 4,
     name: "Toyota Land Cruiser",
-    price: 120,
+    price: 300,
     fuel: "Diesel",
     seats: 7,
     speed: "180 km/h",
@@ -43,7 +43,7 @@ const carsData = [
   {
     id: 5,
     name: "Mazda CX-5",
-    price: 70,
+    price: 180,
     fuel: "Petrol",
     seats: 5,
     speed: "200 km/h",
@@ -52,7 +52,7 @@ const carsData = [
   {
     id: 6,
     name: "Mercedes G Wagon",
-    price: 200,
+    price: 2000,
     fuel: "Petrol",
     seats: 5,
     speed: "220 km/h",
@@ -61,7 +61,7 @@ const carsData = [
   {
     id: 7,
     name: "Toyota Land Cruiser",
-    price: 120,
+    price: 300,
     fuel: "Diesel",
     seats: 7,
     speed: "180 km/h",
@@ -70,7 +70,7 @@ const carsData = [
   {
     id: 8,
     name: "Mazda CX-5",
-    price: 70,
+    price: 180,
     fuel: "Petrol",
     seats: 5,
     speed: "200 km/h",
