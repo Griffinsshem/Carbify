@@ -94,6 +94,7 @@ export default function BookingPage() {
               <Calendar className="text-gray-900" size={20} />
               <input
                 type="date"
+                placeholder="Pickup date"
                 className="w-full outline-none"
                 onChange={(e) =>
                   setFormData({ ...formData, pickupDate: e.target.value })
@@ -106,6 +107,7 @@ export default function BookingPage() {
               <Calendar className="text-gray-900" size={20} />
               <input
                 type="date"
+                placeholder="Return date"
                 className="w-full outline-none"
                 onChange={(e) =>
                   setFormData({ ...formData, returnDate: e.target.value })
