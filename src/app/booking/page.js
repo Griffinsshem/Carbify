@@ -38,7 +38,7 @@ export default function BookingPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-neutral-100 to-white">
       {/* Hero */}
-      <div className="py-16 text-center bg-gradient-to-r from-black to-gray-900 text-white">
+      <div className="py-16 text-center bg-gradient-to-r from-[#0F9E99] to-[#0C7F7B] text-white">
         <h1 className="text-4xl font-bold">Book Your Ride</h1>
         <p className="text-gray-300 mt-2">Secure your vehicle with ease</p>
       </div>
