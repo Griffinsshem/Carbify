@@ -45,13 +45,13 @@ export default function BookingPage() {
 
       <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-10 px-6 py-16">
         {/* Booking Form */}
-        <div className="md:col-span-2 bg-white p-8 rounded-2xl shadow-xl border border-gray-100 space-y-6">
+        <div className="md:col-span-2 bg-white p-8 rounded-2xl shadow-xl border border-gray-900 space-y-6">
           <h2 className="text-2xl font-semibold">Booking Details</h2>
 
           {/* Input Wrapper */}
           <div className="space-y-4">
             {/* Full Name */}
-            <div className="flex gap-3 items-center border rounded-xl p-3">
+            <div className="flex gap-3 items-center border rounded-xl p-3 border-gray-900">
               <User className="text-gray-900" size={20} />
               <input
                 type="text"
@@ -64,7 +64,7 @@ export default function BookingPage() {
             </div>
 
             {/* Email */}
-            <div className="flex gap-3 items-center border rounded-xl p-3">
+            <div className="flex gap-3 items-center border rounded-xl p-3 border-gray-900">
               <Mail className="text-gray-900" size={20} />
               <input
                 type="email"
@@ -77,7 +77,7 @@ export default function BookingPage() {
             </div>
 
             {/* Phone */}
-            <div className="flex gap-3 items-center border rounded-xl p-3">
+            <div className="flex gap-3 items-center border rounded-xl p-3 border-gray-900">
               <Phone className="text-gray-900" size={20} />
               <input
                 type="text"
@@ -90,7 +90,7 @@ export default function BookingPage() {
             </div>
 
             {/* Pickup Date */}
-            <div className="flex gap-3 items-center border rounded-xl p-3">
+            <div className="flex gap-3 items-center border rounded-xl p-3 border-gray-900">
               <Calendar className="text-gray-900" size={20} />
               <input
                 type="date"
@@ -102,7 +102,7 @@ export default function BookingPage() {
             </div>
 
             {/* Return Date */}
-            <div className="flex gap-3 items-center border rounded-xl p-3">
+            <div className="flex gap-3 items-center border rounded-xl p-3 border-gray-900">
               <Calendar className="text-gray-900" size={20} />
               <input
                 type="date"
@@ -114,7 +114,7 @@ export default function BookingPage() {
             </div>
 
             {/* Pickup Location */}
-            <div className="flex gap-3 items-center border rounded-xl p-3">
+            <div className="flex gap-3 items-center border rounded-xl p-3 border-gray-900">
               <MapPin className="text-gray-900" size={20} />
               <input
                 type="text"
@@ -127,7 +127,7 @@ export default function BookingPage() {
             </div>
 
             {/* Payment Method */}
-            <div className="flex gap-3 items-center border rounded-xl p-3">
+            <div className="flex gap-3 items-center border rounded-xl p-3 border-gray-900">
               <CreditCard className="text-gray-900" size={20} />
               <select
                 className="w-full outline-none bg-transparent"
@@ -150,7 +150,7 @@ export default function BookingPage() {
         </div>
 
         {/* Car Summary */}
-        <div className="bg-white p-6 rounded-2xl shadow-xl border border-gray-100 space-y-4">
+        <div className="bg-white p-6 rounded-2xl shadow-xl border border-gray-900 space-y-4">
           <h2 className="text-xl font-semibold">Car Summary</h2>
 
           {carImage && (
