@@ -83,7 +83,7 @@ export default function CarDetailsPage() {
           </div>
 
           <Link
-            href={`/booking/${car.id}`}
+            href={`/booking?name=${car.name}&price=${car.price}&image=${car.image}`}
             className="inline-block text-lg font-semibold px-6 py-3 bg-[#EFE9E0] text-[#062825] rounded-xl hover:bg-white transition"
           >
             Book This Car
