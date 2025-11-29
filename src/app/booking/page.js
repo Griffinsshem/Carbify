@@ -166,7 +166,7 @@ export default function BookingPage() {
           )}
 
           <p className="text-lg font-semibold">{carName}</p>
-          <p className="text-gray-600">KES {carPrice?.toLocaleString()} / day</p>
+          <p className="text-gray-600">$ {carPrice?.toLocaleString()} / day</p>
 
           <hr className="my-4" />
 
@@ -177,7 +177,7 @@ export default function BookingPage() {
 
           <div className="flex justify-between text-black text-lg font-bold">
             <span>Total:</span>
-            <span>KES {total.toLocaleString()}</span>
+            <span>$ {total.toLocaleString()}</span>
           </div>
         </div>
       </div>
