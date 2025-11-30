@@ -11,7 +11,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-6 py-10 grid grid-cols-1 md:grid-cols-4 gap-8">
 
         {/* Brand */}
-        <div>
+        <div className="border border-white p-4 rounded-lg">
           <div className="flex items-center gap-2 mb-3">
             <Car className="w-7 h-7 text-[#EFE9E0]" strokeWidth={2.4} />
             <h1 className="text-3xl font-bold tracking-wide">Carbify</h1>
