@@ -109,10 +109,10 @@ export default function CarsListPage() {
               <h2 className="text-xl font-bold mb-2">{car.name}</h2>
 
               <div className="text-white/80 space-y-2 text-sm mb-4">
-                <p className="flex items-center gap-2"><Fuel size={18} /> {car.fuel}</p>
-                <p className="flex items-center gap-2"><Users size={18} /> {car.seats} Seats</p>
-                <p className="flex items-center gap-2"><Gauge size={18} /> {car.speed}</p>
-                <p className="flex items-center gap-2"><DollarSign size={18} /> ${car.price}/day</p>
+                <p className="flex items-center gap-2 font-bold"><Fuel size={18} /> {car.fuel}</p>
+                <p className="flex items-center gap-2 font-bold"><Users size={18} /> {car.seats} Seats</p>
+                <p className="flex items-center gap-2 font-bold"><Gauge size={18} /> {car.speed}</p>
+                <p className="flex items-center gap-2 font-bold"><DollarSign size={18} /> ${car.price}/day</p>
               </div>
 
               <Link
