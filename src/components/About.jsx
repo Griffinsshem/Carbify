@@ -56,7 +56,7 @@ export default function About() {
           <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-8">
 
             {/* Feature */}
-            <div className="bg-[#E7F8F7] p-6 rounded-xl shadow-sm border border-[#0F9E99]/10 text-center">
+            <div className="bg-[#E7F8F7] p-6 rounded-xl shadow-sm border border-[#0F9E99]/80 text-center">
               <Car className="w-10 h-10 mx-auto text-[#0F9E99]" />
               <h3 className="font-bold mt-3 text-lg">Wide Car Selection</h3>
               <p className="text-base font-semibold text-[#0F3E3B]/70 mt-2">
@@ -64,7 +64,7 @@ export default function About() {
               </p>
             </div>
 
-            <div className="bg-[#E7F8F7] p-6 rounded-xl shadow-sm border border-[#0F9E99]/10 text-center">
+            <div className="bg-[#E7F8F7] p-6 rounded-xl shadow-sm border border-[#0F9E99]/80 text-center">
               <ShieldCheck className="w-10 h-10 mx-auto text-[#0F9E99]" />
               <h3 className="font-bold mt-3 text-lg">Trusted & Secure</h3>
               <p className="text-base font-semibold text-[#0F3E3B]/70 mt-2">
@@ -72,7 +72,7 @@ export default function About() {
               </p>
             </div>
 
-            <div className="bg-[#E7F8F7] p-6 rounded-xl shadow-sm border border-[#0F9E99]/10 text-center">
+            <div className="bg-[#E7F8F7] p-6 rounded-xl shadow-sm border border-[#0F9E99]/80 text-center">
               <Clock className="w-10 h-10 mx-auto text-[#0F9E99]" />
               <h3 className="font-bold mt-3 text-lg">24/7 Availability</h3>
               <p className="text-base font-semibold text-[#0F3E3B]/70 mt-2">
@@ -80,7 +80,7 @@ export default function About() {
               </p>
             </div>
 
-            <div className="bg-[#E7F8F7] p-6 rounded-xl shadow-sm border border-[#0F9E99]/10 text-center">
+            <div className="bg-[#E7F8F7] p-6 rounded-xl shadow-sm border border-[#0F9E99]/80 text-center">
               <ThumbsUp className="w-10 h-10 mx-auto text-[#0F9E99]" />
               <h3 className="font-bold mt-3 text-lg">Affordable Prices</h3>
               <p className="text-base font-semibold text-[#0F3E3B]/70 mt-2">
