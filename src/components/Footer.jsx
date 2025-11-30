@@ -46,7 +46,7 @@ export default function Footer() {
         </div>
 
         {/* Contact + Social Icons */}
-        <div>
+        <div className="border border-white p-4 rounded-lg">
           <h3 className="text-lg font-semibold mb-3">Contact Us</h3>
 
           <div className="space-y-2.5 text-base mb-4">
