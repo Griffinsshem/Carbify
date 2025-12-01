@@ -16,7 +16,7 @@ export default function MyBookingsPage() {
       {/* Page Title */}
       <div className="text-center mb-12">
         <h1 className="text-4xl font-bold text-[#0F9E99]">My Bookings</h1>
-        <p className="text-gray-600 mt-2 text-lg">
+        <p className="text-gray-900 mt-2 text-lg">
           View all the vehicles you have booked
         </p>
       </div>
