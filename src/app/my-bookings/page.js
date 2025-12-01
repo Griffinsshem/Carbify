@@ -43,7 +43,7 @@ export default function MyBookingsPage() {
 
               <hr className="my-3" />
 
-              <div className="text-sm text-gray-600">
+              <div className="text-base text-gray-600">
                 <p><strong>Name:</strong> {booking.fullName}</p>
                 <p><strong>Email:</strong> {booking.email}</p>
                 <p><strong>Phone:</strong> {booking.phone}</p>
