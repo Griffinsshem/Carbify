@@ -13,7 +13,7 @@ export default function MyBookingsPage() {
 
   return (
     <div className="min-h-screen bg-gray-100 p-6">
-      <h1 className="text-3xl font-bold mb-6">My Bookings</h1>
+      <h1 className="text-3xl text-[#0F9E99] font-bold mb-6">My Bookings</h1>
 
       {bookings.length === 0 ? (
         <p className="text-lg text-gray-600">You have no bookings yet.</p>
