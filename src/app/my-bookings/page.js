@@ -121,7 +121,7 @@ export default function MyBookingsPage() {
           {filteredBookings.map((booking, index) => (
             <div
               key={index}
-              className="bg-white/70 backdrop-blur-xl border border-gray-200 shadow-xl rounded-2xl p-6 transition hover:shadow-2xl hover:-translate-y-1"
+              className="bg-white/70 backdrop-blur-xl border border-gray-900 shadow-xl rounded-2xl p-6 transition hover:shadow-2xl hover:-translate-y-1"
             >
               <div className="w-full h-48 rounded-xl overflow-hidden">
                 <Image
