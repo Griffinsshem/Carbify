@@ -33,7 +33,7 @@ export default function MyBookingsPage() {
               />
 
               <h2 className="text-xl font-semibold mt-3">{booking.name}</h2>
-              <p className="text-gray-700 font-medium">Ksh {booking.price}</p>
+              <p className="text-gray-700 font-medium">$ {booking.price}</p>
 
               <div className="text-sm text-gray-600 mt-2">
                 <p><strong>Pickup:</strong> {booking.pickupDate}</p>
