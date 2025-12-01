@@ -35,6 +35,34 @@ export default function BookingPage() {
   const days = calculateDays();
   const total = days * (carPrice || 0);
 
+  const handleConfirmBooking = () => {
+    const newBooking = {
+      name: carName,
+      price: carPrice,
+      image: carImage,
+      pickupDate: formData.pickupDate,
+      returnDate: formData.returnDate,
+      location: formData.location,
+      payment: formData.payment,
+      fullName: formData.fullName,
+      email: formData.email,
+      phone: formData.phone,
+    };
+
+    // Get existing bookings from storage
+    const existing = JSON.parse(localStorage.getItem("bookings") || "[]");
+
+    // Add the new booking
+    existing.push(newBooking);
+
+    // Save back to localStorage
+    localStorage.setItem("bookings", JSON.stringify(existing));
+
+    // Redirect user to the "My Bookings" page
+    window.location.href = "/my-bookings";
+  };
+
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-neutral-100 to-white">
       {/* Hero */}
@@ -146,9 +174,13 @@ export default function BookingPage() {
           </div>
 
           {/* Submit */}
-          <button className="w-full py-4 mt-4 bg-black text-white rounded-xl text-lg font-semibold hover:bg-gray-900 transition">
+          <button
+            onClick={handleConfirmBooking}
+            className="w-full py-4 mt-4 bg-black text-white rounded-xl text-lg font-semibold hover:bg-gray-900 transition"
+          >
             Confirm Booking
           </button>
+
         </div>
 
         {/* Car Summary */}
