@@ -3,6 +3,17 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 
+// Lucide Icons
+import {
+  Car,
+  DollarSign,
+  Calendar,
+  MapPin,
+  User,
+  Mail,
+  Phone,
+} from "lucide-react";
+
 export default function MyBookingsPage() {
   const [bookings, setBookings] = useState([]);
   const [filteredBookings, setFilteredBookings] = useState([]);
@@ -13,34 +24,31 @@ export default function MyBookingsPage() {
   const [returnFilter, setReturnFilter] = useState("");
   const [locationFilter, setLocationFilter] = useState("");
 
+  // Load stored bookings
   useEffect(() => {
     const stored = JSON.parse(localStorage.getItem("bookings") || "[]");
     setBookings(stored);
     setFilteredBookings(stored);
   }, []);
 
-  // Apply filters
+  // Filter logic
   useEffect(() => {
     let results = bookings;
 
-    // Search by car name
     if (search.trim() !== "") {
       results = results.filter((b) =>
         b.name.toLowerCase().includes(search.toLowerCase())
       );
     }
 
-    // Filter by pickup date
     if (pickupFilter !== "") {
       results = results.filter((b) => b.pickupDate >= pickupFilter);
     }
 
-    // Filter by return date
     if (returnFilter !== "") {
       results = results.filter((b) => b.returnDate <= returnFilter);
     }
 
-    // Filter by location
     if (locationFilter !== "") {
       results = results.filter((b) =>
         b.location.toLowerCase().includes(locationFilter.toLowerCase())
@@ -50,12 +58,11 @@ export default function MyBookingsPage() {
     setFilteredBookings(results);
   }, [search, pickupFilter, returnFilter, locationFilter, bookings]);
 
-  // Extract unique locations
+  // Unique locations for dropdown
   const locations = [...new Set(bookings.map((b) => b.location))];
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-neutral-100 to-white px-6 py-16">
-
       {/* Title */}
       <div className="text-center mb-12">
         <h1 className="text-4xl font-bold text-[#0F9E99]">My Bookings</h1>
@@ -71,8 +78,6 @@ export default function MyBookingsPage() {
         </h2>
 
         <div className="grid md:grid-cols-4 gap-4">
-
-          {/* Search Car Name */}
           <input
             type="text"
             placeholder="Search car..."
@@ -81,7 +86,6 @@ export default function MyBookingsPage() {
             className="p-3 border border-gray-300 rounded-xl outline-none"
           />
 
-          {/* Pickup Date */}
           <input
             type="date"
             value={pickupFilter}
@@ -89,7 +93,6 @@ export default function MyBookingsPage() {
             className="p-3 border border-gray-300 rounded-xl outline-none"
           />
 
-          {/* Return Date */}
           <input
             type="date"
             value={returnFilter}
@@ -97,7 +100,6 @@ export default function MyBookingsPage() {
             className="p-3 border border-gray-300 rounded-xl outline-none"
           />
 
-          {/* Location Selector */}
           <select
             value={locationFilter}
             onChange={(e) => setLocationFilter(e.target.value)}
@@ -105,7 +107,9 @@ export default function MyBookingsPage() {
           >
             <option value="">All Locations</option>
             {locations.map((loc, i) => (
-              <option key={i} value={loc}>{loc}</option>
+              <option key={i} value={loc}>
+                {loc}
+              </option>
             ))}
           </select>
         </div>
@@ -133,25 +137,68 @@ export default function MyBookingsPage() {
                 />
               </div>
 
-              <h2 className="text-2xl font-semibold text-[#0F9E99] mt-4">
-                {booking.name}
-              </h2>
-              <p className="text-gray-700 font-medium text-lg">
-                Total: ${booking.price}
-              </p>
+              {/* Car Name with Icon */}
+              <div className="flex items-center gap-2 mt-4">
+                <Car className="w-5 h-5 text-[#0F9E99]" />
+                <h2 className="text-2xl font-semibold text-[#0F9E99]">
+                  {booking.name}
+                </h2>
+              </div>
 
-              <div className="mt-4 text-gray-800 space-y-1">
-                <p><strong>Pickup:</strong> {booking.pickupDate}</p>
-                <p><strong>Return:</strong> {booking.returnDate}</p>
-                <p><strong>Location:</strong> {booking.location}</p>
+              {/* Price */}
+              <div className="flex items-center gap-2 text-gray-700 font-medium text-lg mt-1">
+                <DollarSign className="w-5 h-5 text-gray-700" />
+                <span>Total: ${booking.price}</span>
+              </div>
+
+              {/* Date & Location */}
+              <div className="mt-4 text-gray-800 space-y-2">
+                <div className="flex items-center gap-2">
+                  <Calendar className="w-5 h-5 text-gray-600" />
+                  <p>
+                    <strong>Pickup:</strong> {booking.pickupDate}
+                  </p>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <Calendar className="w-5 h-5 text-gray-600" />
+                  <p>
+                    <strong>Return:</strong> {booking.returnDate}
+                  </p>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <MapPin className="w-5 h-5 text-gray-600" />
+                  <p>
+                    <strong>Location:</strong> {booking.location}
+                  </p>
+                </div>
               </div>
 
               <hr className="my-4" />
 
-              <div className="text-gray-800 space-y-1">
-                <p><strong>Name:</strong> {booking.fullName}</p>
-                <p><strong>Email:</strong> {booking.email}</p>
-                <p><strong>Phone:</strong> {booking.phone}</p>
+              {/* User Info */}
+              <div className="text-gray-800 space-y-2">
+                <div className="flex items-center gap-2">
+                  <User className="w-5 h-5 text-gray-600" />
+                  <p>
+                    <strong>Name:</strong> {booking.fullName}
+                  </p>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <Mail className="w-5 h-5 text-gray-600" />
+                  <p>
+                    <strong>Email:</strong> {booking.email}
+                  </p>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <Phone className="w-5 h-5 text-gray-600" />
+                  <p>
+                    <strong>Phone:</strong> {booking.phone}
+                  </p>
+                </div>
               </div>
             </div>
           ))}
