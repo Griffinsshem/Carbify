@@ -32,8 +32,8 @@ export default function MyBookingsPage() {
                 className="rounded-lg"
               />
 
-              <h2 className="text-xl font-semibold mt-3">{booking.name}</h2>
-              <p className="text-gray-700 font-medium">$ {booking.price}</p>
+              <h2 className="text-xl text-[#0F9E99] font-semibold mt-3">{booking.name}</h2>
+              <p className="text-gray-700 font-medium">Total: $ {booking.price}</p>
 
               <div className="text-base text-gray-900 mt-2">
                 <p><strong>Pickup:</strong> {booking.pickupDate}</p>
