@@ -11,6 +11,7 @@ export default function Navbar() {
   const menuItems = [
     { name: "Home", href: "/" },
     { name: "Cars", href: "/cars" },
+    { name: "My Bookings", href: "/my-bookings" },
     { name: "About", href: "/about" },
     { name: "Contact", href: "/contact" },
   ];
@@ -37,8 +38,8 @@ export default function Navbar() {
               {/* Text */}
               <span
                 className={`${pathname === item.href
-                    ? "text-white"
-                    : "text-[#EFE9E0] group-hover:text-white"
+                  ? "text-white"
+                  : "text-[#EFE9E0] group-hover:text-white"
                   }`}
               >
                 {item.name}
