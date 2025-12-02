@@ -72,7 +72,7 @@ export default function ContactPage() {
       {/* Contact Section */}
       <div className="max-w-6xl mx-auto px-6 py-16 grid md:grid-cols-2 gap-10">
         {/* Contact Info */}
-        <div className="bg-white p-10 rounded-2xl shadow-xl border border-gray-200">
+        <div className="bg-white p-10 rounded-2xl shadow-xl border border-gray-900">
           <h2 className="text-3xl font-semibold text-[#0F9E99] mb-6">
             Contact Information
           </h2>
