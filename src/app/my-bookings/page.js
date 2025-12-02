@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import { auth } from "@/firebase";
+import { auth } from "@/firebase/config";
 
 // Lucide Icons
 import {
