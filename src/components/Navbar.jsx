@@ -3,6 +3,7 @@
 import React from "react";
 import { Car } from "lucide-react";
 import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -20,22 +21,20 @@ export default function Navbar() {
     <nav className="w-full bg-[#0F9E99] text-[#EFE9E0] backdrop-blur-sm shadow-lg shadow-black/10 sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
 
-        {/* Logo */}
-        <div className="flex items-center gap-3">
+        {/* Logo - now clickable */}
+        <Link href="/" className="flex items-center gap-3">
           <Car className="w-7 h-7 text-[#EFE9E0]" strokeWidth={2.4} />
           <span className="text-2xl font-extrabold tracking-wide">Carbify</span>
-        </div>
+        </Link>
 
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-8">
-
           {menuItems.map((item) => (
             <a
               key={item.href}
               href={item.href}
               className="relative group text-lg font-semibold transition-all duration-200"
             >
-              {/* Text */}
               <span
                 className={`${pathname === item.href
                   ? "text-white"
@@ -45,7 +44,6 @@ export default function Navbar() {
                 {item.name}
               </span>
 
-              {/* Active Underline Animation */}
               <span
                 className={`
                   absolute left-0 -bottom-1 h-[3px] rounded-full bg-white transition-all duration-300
@@ -55,7 +53,6 @@ export default function Navbar() {
             </a>
           ))}
 
-          {/* Auth Buttons */}
           <button className="px-5 py-2 rounded-full bg-[#EFE9E0] text-[#0F9E99] font-semibold hover:bg-white transition-all duration-300 shadow-md">
             Login
           </button>
@@ -90,7 +87,6 @@ export default function Navbar() {
           </a>
         ))}
 
-        {/* Mobile Login Button */}
         <button className="mt-2 w-full py-2 rounded-lg bg-[#EFE9E0] text-[#0F9E99] font-semibold hover:bg-white transition duration-300 shadow">
           Login
         </button>
