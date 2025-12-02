@@ -85,7 +85,7 @@ export default function ContactPage() {
               </div>
               <div>
                 <p className="font-semibold text-lg">Email</p>
-                <p className="text-gray-700">support@carselite.com</p>
+                <p className="text-gray-900 font-base">support@carselite.com</p>
               </div>
             </div>
 
@@ -96,7 +96,7 @@ export default function ContactPage() {
               </div>
               <div>
                 <p className="font-semibold text-lg">Phone</p>
-                <p className="text-gray-700">+254 712 345 678</p>
+                <p className="text-gray-900 font-base">+254 712 345 678</p>
               </div>
             </div>
 
@@ -107,7 +107,7 @@ export default function ContactPage() {
               </div>
               <div>
                 <p className="font-semibold text-lg">Location</p>
-                <p className="text-gray-700">Nairobi, Kenya</p>
+                <p className="text-gray-900 font-base">Nairobi, Kenya</p>
               </div>
             </div>
           </div>
