@@ -1,7 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import { Mail, Phone, MapPin, User, MessageSquare } from "lucide-react";
+import {
+  Mail,
+  Phone,
+  MapPin,
+  User,
+  MessageSquare,
+  CheckCircle,
+} from "lucide-react";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -11,31 +18,49 @@ export default function ContactPage() {
     message: "",
   });
 
-  const [submitted, setSubmitted] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // For now, store message in localStorage (replace with backend later)
+    // Save to localStorage temporarily (replace with real backend later)
     const storedMessages =
       JSON.parse(localStorage.getItem("messages") || "[]");
-
     storedMessages.push(formData);
     localStorage.setItem("messages", JSON.stringify(storedMessages));
 
-    setSubmitted(true);
-
-    // reset form
+    // Reset form
     setFormData({
       fullname: "",
       email: "",
       phone: "",
       message: "",
     });
+
+    // Show modal
+    setShowModal(true);
+
+    // Auto-close modal
+    setTimeout(() => setShowModal(false), 3000);
   };
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-neutral-100 to-white">
+      {/* Success Modal */}
+      {showModal && (
+        <div className="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 flex items-center justify-center animate-fadeIn">
+          <div className="bg-white p-8 rounded-2xl shadow-2xl text-center max-w-sm w-full animate-scaleUp border border-gray-200">
+            <CheckCircle className="text-[#0F9E99] w-16 h-16 mx-auto mb-4" />
+            <h2 className="text-2xl font-bold text-[#0F9E99]">
+              Message Sent!
+            </h2>
+            <p className="text-gray-600 mt-2">
+              We’ve received your message and will get back to you shortly.
+            </p>
+          </div>
+        </div>
+      )}
+
       {/* Hero Section */}
       <div className="py-20 bg-gradient-to-r from-[#0F9E99] to-[#0C7F7B] text-white text-center">
         <h1 className="text-5xl font-bold">Get In Touch</h1>
@@ -46,7 +71,6 @@ export default function ContactPage() {
 
       {/* Contact Section */}
       <div className="max-w-6xl mx-auto px-6 py-16 grid md:grid-cols-2 gap-10">
-
         {/* Contact Info */}
         <div className="bg-white p-10 rounded-2xl shadow-xl border border-gray-200">
           <h2 className="text-3xl font-semibold text-[#0F9E99] mb-6">
@@ -95,14 +119,7 @@ export default function ContactPage() {
             Send Us a Message
           </h2>
 
-          {submitted && (
-            <p className="mb-4 text-green-600 text-lg font-semibold">
-              Message sent successfully!
-            </p>
-          )}
-
           <form onSubmit={handleSubmit} className="space-y-5">
-
             {/* Full Name */}
             <div className="flex items-center gap-3 border rounded-xl p-3 border-gray-300">
               <User className="text-gray-600" size={22} />
@@ -163,17 +180,34 @@ export default function ContactPage() {
               />
             </div>
 
-            {/* Submit Button */}
+            {/* Submit Btn */}
             <button
               type="submit"
               className="w-full py-4 bg-[#0F9E99] text-white rounded-xl text-lg font-semibold hover:bg-[#0d827e] transition"
             >
               Send Message
             </button>
-
           </form>
         </div>
       </div>
+
+      {/* Animations */}
+      <style jsx global>{`
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+        @keyframes scaleUp {
+          from { transform: scale(0.8); opacity: 0; }
+          to { transform: scale(1); opacity: 1; }
+        }
+        .animate-fadeIn {
+          animation: fadeIn 0.3s ease-out;
+        }
+        .animate-scaleUp {
+          animation: scaleUp 0.25s ease-out;
+        }
+      `}</style>
     </div>
   );
 }
