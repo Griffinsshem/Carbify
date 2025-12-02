@@ -114,7 +114,7 @@ export default function ContactPage() {
         </div>
 
         {/* Form */}
-        <div className="bg-white p-10 rounded-2xl shadow-xl border border-gray-200">
+        <div className="bg-white p-10 rounded-2xl shadow-xl border border-gray-900">
           <h2 className="text-3xl font-semibold text-[#0F9E99] mb-6">
             Send Us a Message
           </h2>
