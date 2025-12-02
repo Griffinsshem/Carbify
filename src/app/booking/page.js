@@ -3,12 +3,30 @@
 import React, { useState, useEffect } from "react";
 import { Calendar, Mail, Phone, MapPin, CreditCard, User } from "lucide-react";
 import Image from "next/image";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
+import { auth } from "@/firebase"; // 🔥 IMPORT FIREBASE AUTH
 
 export default function BookingPage() {
   const searchParams = useSearchParams();
+  const router = useRouter();
 
-  // Get car details from URL query params
+  // Logged-in user
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const unsub = auth.onAuthStateChanged((currentUser) => {
+      setUser(currentUser);
+    });
+    return () => unsub();
+  }, []);
+
+  // If user is not logged in → block booking
+  const handleRequireLogin = () => {
+    alert("You must be logged in to make a booking.");
+    router.push("/login");
+  };
+
+  // Car details from URL
   const carName = searchParams.get("name");
   const carPrice = parseInt(searchParams.get("price"));
   const carImage = searchParams.get("image");
@@ -35,7 +53,10 @@ export default function BookingPage() {
   const days = calculateDays();
   const total = days * (carPrice || 0);
 
+  // CONFIRM BOOKING BUTTON
   const handleConfirmBooking = () => {
+    if (!user) return handleRequireLogin();
+
     const newBooking = {
       name: carName,
       price: carPrice,
@@ -47,21 +68,19 @@ export default function BookingPage() {
       fullName: formData.fullName,
       email: formData.email,
       phone: formData.phone,
+      userId: user.uid, // store owner
     };
 
-    // Get existing bookings from storage
-    const existing = JSON.parse(localStorage.getItem("bookings") || "[]");
+    // Each user has their own bookings
+    const storageKey = `bookings_${user.uid}`;
 
-    // Add the new booking
+    const existing = JSON.parse(localStorage.getItem(storageKey) || "[]");
     existing.push(newBooking);
 
-    // Save back to localStorage
-    localStorage.setItem("bookings", JSON.stringify(existing));
+    localStorage.setItem(storageKey, JSON.stringify(existing));
 
-    // Redirect user to the "My Bookings" page
-    window.location.href = "/my-bookings";
+    router.push("/my-bookings");
   };
-
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-neutral-100 to-white">
@@ -76,11 +95,10 @@ export default function BookingPage() {
         <div className="md:col-span-2 bg-white p-8 rounded-2xl shadow-xl border border-gray-900 space-y-6">
           <h2 className="text-2xl font-semibold">Booking Details</h2>
 
-          {/* Input Wrapper */}
           <div className="space-y-4">
             {/* Full Name */}
             <div className="flex gap-3 items-center border rounded-xl p-3 border-gray-900">
-              <User className="text-gray-900" size={20} />
+              <User size={20} />
               <input
                 type="text"
                 placeholder="Full Name"
@@ -93,7 +111,7 @@ export default function BookingPage() {
 
             {/* Email */}
             <div className="flex gap-3 items-center border rounded-xl p-3 border-gray-900">
-              <Mail className="text-gray-900" size={20} />
+              <Mail size={20} />
               <input
                 type="email"
                 placeholder="Email Address"
@@ -106,7 +124,7 @@ export default function BookingPage() {
 
             {/* Phone */}
             <div className="flex gap-3 items-center border rounded-xl p-3 border-gray-900">
-              <Phone className="text-gray-900" size={20} />
+              <Phone size={20} />
               <input
                 type="text"
                 placeholder="Phone Number"
@@ -119,10 +137,9 @@ export default function BookingPage() {
 
             {/* Pickup Date */}
             <div className="flex gap-3 items-center border rounded-xl p-3 border-gray-900">
-              <Calendar className="text-gray-900" size={20} />
+              <Calendar size={20} />
               <input
                 type="date"
-                placeholder="Pickup date"
                 className="w-full outline-none"
                 onChange={(e) =>
                   setFormData({ ...formData, pickupDate: e.target.value })
@@ -132,10 +149,9 @@ export default function BookingPage() {
 
             {/* Return Date */}
             <div className="flex gap-3 items-center border rounded-xl p-3 border-gray-900">
-              <Calendar className="text-gray-900" size={20} />
+              <Calendar size={20} />
               <input
                 type="date"
-                placeholder="Return date"
                 className="w-full outline-none"
                 onChange={(e) =>
                   setFormData({ ...formData, returnDate: e.target.value })
@@ -143,9 +159,9 @@ export default function BookingPage() {
               />
             </div>
 
-            {/* Pickup Location */}
+            {/* Location */}
             <div className="flex gap-3 items-center border rounded-xl p-3 border-gray-900">
-              <MapPin className="text-gray-900" size={20} />
+              <MapPin size={20} />
               <input
                 type="text"
                 placeholder="Pickup Location"
@@ -158,7 +174,7 @@ export default function BookingPage() {
 
             {/* Payment Method */}
             <div className="flex gap-3 items-center border rounded-xl p-3 border-gray-900">
-              <CreditCard className="text-gray-900" size={20} />
+              <CreditCard size={20} />
               <select
                 className="w-full outline-none bg-transparent"
                 onChange={(e) =>
@@ -173,14 +189,12 @@ export default function BookingPage() {
             </div>
           </div>
 
-          {/* Submit */}
           <button
             onClick={handleConfirmBooking}
             className="w-full py-4 mt-4 bg-black text-white rounded-xl text-lg font-semibold hover:bg-gray-900 transition"
           >
             Confirm Booking
           </button>
-
         </div>
 
         {/* Car Summary */}
