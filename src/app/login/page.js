@@ -16,7 +16,16 @@ export default function LoginPage() {
     setError("");
 
     try {
-      await signInWithEmailAndPassword(auth, email, password);
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+
+      // 🔥 Save token (UID works perfectly for login tracking)
+      localStorage.setItem("token", user.uid);
+
+      // 🔥 Notify Navbar and all tabs
+      window.dispatchEvent(new Event("storage"));
+
+      // Redirect home
       window.location.href = "/";
     } catch (err) {
       setError("Invalid email or password");
