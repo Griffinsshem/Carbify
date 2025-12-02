@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { Calendar, Mail, Phone, MapPin, CreditCard, User } from "lucide-react";
 import Image from "next/image";
 import { useSearchParams, useRouter } from "next/navigation";
-import { auth } from "@/firebase"; // 🔥 IMPORT FIREBASE AUTH
+import { auth } from "@/firebase";
 
 export default function BookingPage() {
   const searchParams = useSearchParams();
@@ -22,7 +22,6 @@ export default function BookingPage() {
 
   // If user is not logged in → block booking
   const handleRequireLogin = () => {
-    alert("You must be logged in to make a booking.");
     router.push("/login");
   };
 
@@ -68,7 +67,7 @@ export default function BookingPage() {
       fullName: formData.fullName,
       email: formData.email,
       phone: formData.phone,
-      userId: user.uid, // store owner
+      userId: user.uid,
     };
 
     // Each user has their own bookings
