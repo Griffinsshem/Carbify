@@ -53,9 +53,12 @@ export default function Navbar() {
             </a>
           ))}
 
-          <button className="px-5 py-2 rounded-full bg-[#EFE9E0] text-[#0F9E99] font-semibold hover:bg-white transition-all duration-300 shadow-md">
-            Login
-          </button>
+          <a href="/login">
+            <button className="px-5 py-2 rounded-full bg-[#EFE9E0] text-[#0F9E99] font-semibold hover:bg-white transition-all duration-300 shadow-md">
+              Login
+            </button>
+          </a>
+
         </div>
 
         {/* Hamburger Button */}
