@@ -17,9 +17,9 @@ export default function RegisterPage() {
 
     try {
       await createUserWithEmailAndPassword(auth, email, password);
-      window.location.href = "/";
+      window.location.href = "/login";
     } catch (err) {
-      setError(err.message);
+      setError("Registration failed. Please check your details and try again.");
     }
   };
 
