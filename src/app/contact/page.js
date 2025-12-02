@@ -121,7 +121,7 @@ export default function ContactPage() {
 
           <form onSubmit={handleSubmit} className="space-y-5">
             {/* Full Name */}
-            <div className="flex items-center gap-3 border rounded-xl p-3 border-gray-300">
+            <div className="flex items-center gap-3 border rounded-xl p-3 border-gray-900">
               <User className="text-gray-600" size={22} />
               <input
                 type="text"
@@ -136,7 +136,7 @@ export default function ContactPage() {
             </div>
 
             {/* Email */}
-            <div className="flex items-center gap-3 border rounded-xl p-3 border-gray-300">
+            <div className="flex items-center gap-3 border rounded-xl p-3 border-gray-900">
               <Mail className="text-gray-600" size={22} />
               <input
                 type="email"
@@ -151,7 +151,7 @@ export default function ContactPage() {
             </div>
 
             {/* Phone */}
-            <div className="flex items-center gap-3 border rounded-xl p-3 border-gray-300">
+            <div className="flex items-center gap-3 border rounded-xl p-3 border-gray-900">
               <Phone className="text-gray-600" size={22} />
               <input
                 type="text"
@@ -166,7 +166,7 @@ export default function ContactPage() {
             </div>
 
             {/* Message */}
-            <div className="flex items-start gap-3 border rounded-xl p-3 border-gray-300">
+            <div className="flex items-start gap-3 border rounded-xl p-3 border-gray-900">
               <MessageSquare className="text-gray-600 mt-1" size={22} />
               <textarea
                 placeholder="Write your message..."
