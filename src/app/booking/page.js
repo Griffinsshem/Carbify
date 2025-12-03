@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { Calendar, Mail, Phone, MapPin, CreditCard, User } from "lucide-react";
 import Image from "next/image";
 import { useSearchParams, useRouter } from "next/navigation";
-import { auth } from "@/firebase";
+import { auth } from "../../firebase/config";
 
 export default function BookingPage() {
   const searchParams = useSearchParams();
