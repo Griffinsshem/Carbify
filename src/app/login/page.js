@@ -33,7 +33,7 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-neutral-100 to-white px-4 py-16">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-neutral-100 to-white px-4 py-16 border-[#0F9E99]">
       <div className="bg-white/70 backdrop-blur-xl border border-white/40 shadow-2xl rounded-3xl p-10 w-full max-w-md animate-fadeIn">
 
         {/* Header */}
