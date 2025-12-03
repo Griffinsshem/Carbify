@@ -151,7 +151,7 @@ export default function MyBookingsPage() {
       </div>
 
       {/* Filters */}
-      <div className="max-w-5xl mx-auto bg-white/70 backdrop-blur-xl p-6 rounded-2xl shadow-xl border border-gray-200 mb-10">
+      <div className="max-w-5xl mx-auto bg-white/70 backdrop-blur-xl p-6 rounded-2xl shadow-xl border border-[#0F9E99] mb-10">
         <h2 className="text-xl font-semibold text-[#0F9E99] mb-4">
           Filter Bookings
         </h2>
@@ -162,27 +162,27 @@ export default function MyBookingsPage() {
             placeholder="Search car..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="p-3 border border-gray-300 rounded-xl outline-none"
+            className="p-3 border border-gray-900 font-semibold rounded-xl outline-none"
           />
 
           <input
             type="date"
             value={pickupFilter}
             onChange={(e) => setPickupFilter(e.target.value)}
-            className="p-3 border border-gray-300 rounded-xl outline-none"
+            className="p-3 border border-gray-900 font-bold rounded-xl outline-none"
           />
 
           <input
             type="date"
             value={returnFilter}
             onChange={(e) => setReturnFilter(e.target.value)}
-            className="p-3 border border-gray-300 rounded-xl outline-none"
+            className="p-3 border border-gray-900 font-bold rounded-xl outline-none"
           />
 
           <select
             value={locationFilter}
             onChange={(e) => setLocationFilter(e.target.value)}
-            className="p-3 border border-gray-300 rounded-xl bg-white outline-none"
+            className="p-3 border border-gray-900 font-bold rounded-xl bg-white outline-none"
           >
             <option value="">All Locations</option>
             {locations.map((loc, i) => (
