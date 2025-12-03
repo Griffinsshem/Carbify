@@ -14,6 +14,8 @@ import {
   Mail,
   Phone,
   LogIn,
+  Pencil,
+  Trash
 } from "lucide-react";
 
 export default function MyBookingsPage() {
@@ -246,21 +248,26 @@ export default function MyBookingsPage() {
               <hr className="my-4" />
 
               {/* Buttons */}
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-3 mt-4">
+                {/* EDIT BUTTON */}
                 <button
                   onClick={() => setEditData(booking)}
-                  className="flex-1 py-2 rounded-xl bg-blue-500 text-white font-semibold hover:bg-blue-600 transition"
+                  className="flex-1 flex items-center justify-center gap-2 py-2 rounded-xl bg-green-500 text-white font-semibold hover:bg-green-600 transition"
                 >
+                  <Pencil className="w-4 h-4" />
                   Edit
                 </button>
 
+                {/* DELETE BUTTON */}
                 <button
                   onClick={() => handleDelete(booking.id)}
-                  className="flex-1 py-2 rounded-xl bg-red-500 text-white font-semibold hover:bg-red-600 transition"
+                  className="flex-1 flex items-center justify-center gap-2 py-2 rounded-xl bg-red-500 text-white font-semibold hover:bg-red-600 transition"
                 >
+                  <Trash className="w-4 h-4" />
                   Delete
                 </button>
               </div>
+
             </div>
           ))}
         </div>
