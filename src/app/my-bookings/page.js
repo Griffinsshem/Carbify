@@ -277,81 +277,103 @@ export default function MyBookingsPage() {
       {/* EDIT MODAL */}
       {/* ------------------- */}
       {editData && (
-        <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
-          <div className="bg-white p-6 rounded-2xl w-full max-w-md shadow-xl">
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+          <div className="bg-white p-6 rounded-2xl w-full max-w-md shadow-2xl border border-gray-200 animate-fadeIn">
+
+            {/* Modal Title */}
             <h2 className="text-2xl font-bold text-[#0F9E99] mb-4">
               Edit Booking
             </h2>
 
-            <div className="space-y-3">
+            {/* Input Fields */}
+            <div className="space-y-4">
 
-              <input
-                className="w-full p-3 border rounded-xl"
-                value={editData.fullName}
-                onChange={(e) =>
-                  setEditData({ ...editData, fullName: e.target.value })
-                }
-              />
+              <div>
+                <label className="text-sm font-medium text-gray-600">Full Name</label>
+                <input
+                  className="w-full mt-1 p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#0F9E99] outline-none"
+                  value={editData.fullName}
+                  onChange={(e) =>
+                    setEditData({ ...editData, fullName: e.target.value })
+                  }
+                />
+              </div>
 
-              <input
-                className="w-full p-3 border rounded-xl"
-                value={editData.email}
-                onChange={(e) =>
-                  setEditData({ ...editData, email: e.target.value })
-                }
-              />
+              <div>
+                <label className="text-sm font-medium text-gray-600">Email</label>
+                <input
+                  className="w-full mt-1 p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#0F9E99] outline-none"
+                  value={editData.email}
+                  onChange={(e) =>
+                    setEditData({ ...editData, email: e.target.value })
+                  }
+                />
+              </div>
 
-              <input
-                type="date"
-                className="w-full p-3 border rounded-xl"
-                value={editData.pickupDate}
-                onChange={(e) =>
-                  setEditData({ ...editData, pickupDate: e.target.value })
-                }
-              />
+              <div>
+                <label className="text-sm font-medium text-gray-600">Pickup Date</label>
+                <input
+                  type="date"
+                  className="w-full mt-1 p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#0F9E99] outline-none"
+                  value={editData.pickupDate}
+                  onChange={(e) =>
+                    setEditData({ ...editData, pickupDate: e.target.value })
+                  }
+                />
+              </div>
 
-              <input
-                type="date"
-                className="w-full p-3 border rounded-xl"
-                value={editData.returnDate}
-                onChange={(e) =>
-                  setEditData({ ...editData, returnDate: e.target.value })
-                }
-              />
+              <div>
+                <label className="text-sm font-medium text-gray-600">Return Date</label>
+                <input
+                  type="date"
+                  className="w-full mt-1 p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#0F9E99] outline-none"
+                  value={editData.returnDate}
+                  onChange={(e) =>
+                    setEditData({ ...editData, returnDate: e.target.value })
+                  }
+                />
+              </div>
 
-              <select
-                className="w-full p-3 border rounded-xl"
-                value={editData.location}
-                onChange={(e) =>
-                  setEditData({ ...editData, location: e.target.value })
-                }
-              >
-                {locations.map((loc, i) => (
-                  <option key={i} value={loc}>
-                    {loc}
-                  </option>
-                ))}
-              </select>
+              <div>
+                <label className="text-sm font-medium text-gray-600">Location</label>
+                <select
+                  className="w-full mt-1 p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#0F9E99] outline-none"
+                  value={editData.location}
+                  onChange={(e) =>
+                    setEditData({ ...editData, location: e.target.value })
+                  }
+                >
+                  {locations.map((loc, i) => (
+                    <option key={i} value={loc}>
+                      {loc}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
             </div>
 
+            {/* Action Buttons */}
             <div className="flex gap-3 mt-6">
               <button
                 onClick={() => setEditData(null)}
-                className="flex-1 py-2 bg-gray-300 rounded-xl font-semibold"
+                className="flex-1 py-2 bg-gray-200 text-gray-800 rounded-xl font-semibold hover:bg-gray-300 transition"
               >
                 Cancel
               </button>
 
               <button
                 onClick={handleSaveEdit}
-                className="flex-1 py-2 bg-[#0F9E99] text-white rounded-xl font-semibold"
+                className="flex-1 py-2 bg-[#0F9E99] text-white rounded-xl font-semibold hover:bg-[#0d827f] transition"
               >
                 Save Changes
               </button>
             </div>
+
           </div>
         </div>
       )}
+
 
     </div>
   );
