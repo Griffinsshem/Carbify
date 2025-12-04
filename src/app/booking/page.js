@@ -1,11 +1,5 @@
 "use client";
 
-export const dynamic = "force-dynamic";
-export const fetchCache = "force-no-store";
-export const revalidate = 0;
-export const runtime = "edge";
-export const preferredRegion = "auto";
-
 import React, { useState, useEffect } from "react";
 import { Calendar, Mail, Phone, MapPin, CreditCard, User } from "lucide-react";
 import Image from "next/image";
