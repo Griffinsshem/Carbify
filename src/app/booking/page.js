@@ -1,33 +1,38 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { Calendar, Mail, Phone, MapPin, CreditCard, User } from "lucide-react";
+import React, { Suspense, useEffect, useState } from "react";
+import {
+  Calendar,
+  Mail,
+  Phone,
+  MapPin,
+  CreditCard,
+  User,
+} from "lucide-react";
 import Image from "next/image";
 import { useSearchParams, useRouter } from "next/navigation";
-import { auth } from "../../firebase/config";
+import { auth } from "@/firebase/config";
 
-export default function BookingPage() {
+function BookingContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
 
-  // Logged-in user
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    const unsub = auth.onAuthStateChanged((currentUser) => {
+    const unsubscribe = auth.onAuthStateChanged((currentUser) => {
       setUser(currentUser);
     });
-    return () => unsub();
+
+    return () => unsubscribe();
   }, []);
 
-  // If user is not logged in → block booking
   const handleRequireLogin = () => {
     router.push("/login");
   };
 
-  // Car details from URL
-  const carName = searchParams.get("name");
-  const carPrice = parseInt(searchParams.get("price"));
+  const carName = searchParams.get("name") || "Selected Car";
+  const carPrice = Number(searchParams.get("price") || 0);
   const carImage = searchParams.get("image");
 
   const [formData, setFormData] = useState({
@@ -40,21 +45,28 @@ export default function BookingPage() {
     payment: "",
   });
 
-  // Total days & pricing
+  // Calculate number of rental days
   const calculateDays = () => {
     if (!formData.pickupDate || !formData.returnDate) return 0;
+
     const start = new Date(formData.pickupDate);
     const end = new Date(formData.returnDate);
-    const diff = (end - start) / (1000 * 60 * 60 * 24);
+
+    const diff =
+      (end.getTime() - start.getTime()) / (1000 * 60 * 60 * 24);
+
     return diff > 0 ? diff : 0;
   };
 
   const days = calculateDays();
-  const total = days * (carPrice || 0);
+  const total = days * carPrice;
 
-  // CONFIRM BOOKING BUTTON
+  // Confirm booking
   const handleConfirmBooking = () => {
-    if (!user) return handleRequireLogin();
+    if (!user) {
+      handleRequireLogin();
+      return;
+    }
 
     const newBooking = {
       name: carName,
@@ -68,15 +80,20 @@ export default function BookingPage() {
       email: formData.email,
       phone: formData.phone,
       userId: user.uid,
+      createdAt: new Date().toISOString(),
     };
 
-    // Each user has their own bookings
     const storageKey = `bookings_${user.uid}`;
+    const existingBookings = JSON.parse(
+      localStorage.getItem(storageKey) || "[]"
+    );
 
-    const existing = JSON.parse(localStorage.getItem(storageKey) || "[]");
-    existing.push(newBooking);
+    existingBookings.push(newBooking);
 
-    localStorage.setItem(storageKey, JSON.stringify(existing));
+    localStorage.setItem(
+      storageKey,
+      JSON.stringify(existingBookings)
+    );
 
     router.push("/my-bookings");
   };
@@ -86,13 +103,17 @@ export default function BookingPage() {
       {/* Hero */}
       <div className="py-16 text-center bg-gradient-to-r from-[#0F9E99] to-[#0C7F7B] text-white">
         <h1 className="text-4xl font-bold">Book Your Ride</h1>
-        <p className="text-gray-300 mt-2">Secure your vehicle with ease</p>
+        <p className="text-gray-300 mt-2">
+          Secure your vehicle with ease
+        </p>
       </div>
 
       <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-10 px-6 py-16">
         {/* Booking Form */}
         <div className="md:col-span-2 bg-white p-8 rounded-2xl shadow-xl border border-gray-900 space-y-6">
-          <h2 className="text-2xl font-semibold">Booking Details</h2>
+          <h2 className="text-2xl font-semibold">
+            Booking Details
+          </h2>
 
           <div className="space-y-4">
             {/* Full Name */}
@@ -103,7 +124,10 @@ export default function BookingPage() {
                 placeholder="Full Name"
                 className="w-full outline-none"
                 onChange={(e) =>
-                  setFormData({ ...formData, fullName: e.target.value })
+                  setFormData({
+                    ...formData,
+                    fullName: e.target.value,
+                  })
                 }
               />
             </div>
@@ -116,7 +140,10 @@ export default function BookingPage() {
                 placeholder="Email Address"
                 className="w-full outline-none"
                 onChange={(e) =>
-                  setFormData({ ...formData, email: e.target.value })
+                  setFormData({
+                    ...formData,
+                    email: e.target.value,
+                  })
                 }
               />
             </div>
@@ -129,7 +156,10 @@ export default function BookingPage() {
                 placeholder="Phone Number"
                 className="w-full outline-none"
                 onChange={(e) =>
-                  setFormData({ ...formData, phone: e.target.value })
+                  setFormData({
+                    ...formData,
+                    phone: e.target.value,
+                  })
                 }
               />
             </div>
@@ -141,7 +171,10 @@ export default function BookingPage() {
                 type="date"
                 className="w-full outline-none"
                 onChange={(e) =>
-                  setFormData({ ...formData, pickupDate: e.target.value })
+                  setFormData({
+                    ...formData,
+                    pickupDate: e.target.value,
+                  })
                 }
               />
             </div>
@@ -153,7 +186,10 @@ export default function BookingPage() {
                 type="date"
                 className="w-full outline-none"
                 onChange={(e) =>
-                  setFormData({ ...formData, returnDate: e.target.value })
+                  setFormData({
+                    ...formData,
+                    returnDate: e.target.value,
+                  })
                 }
               />
             </div>
@@ -166,7 +202,10 @@ export default function BookingPage() {
                 placeholder="Pickup Location"
                 className="w-full outline-none"
                 onChange={(e) =>
-                  setFormData({ ...formData, location: e.target.value })
+                  setFormData({
+                    ...formData,
+                    location: e.target.value,
+                  })
                 }
               />
             </div>
@@ -177,7 +216,10 @@ export default function BookingPage() {
               <select
                 className="w-full outline-none bg-transparent"
                 onChange={(e) =>
-                  setFormData({ ...formData, payment: e.target.value })
+                  setFormData({
+                    ...formData,
+                    payment: e.target.value,
+                  })
                 }
               >
                 <option value="">Select Payment Method</option>
@@ -211,7 +253,9 @@ export default function BookingPage() {
           )}
 
           <p className="text-lg font-semibold">{carName}</p>
-          <p className="text-gray-600">$ {carPrice?.toLocaleString()} / day</p>
+          <p className="text-gray-600">
+            $ {carPrice.toLocaleString()} / day
+          </p>
 
           <hr className="my-4" />
 
@@ -227,5 +271,19 @@ export default function BookingPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function BookingPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen flex items-center justify-center">
+          Loading booking details...
+        </div>
+      }
+    >
+      <BookingContent />
+    </Suspense>
   );
 }
